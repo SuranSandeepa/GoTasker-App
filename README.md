@@ -48,3 +48,27 @@ func main() {
     fmt.Println("Hello, Go!")
 }
 ```
+
+## Web API in Go
+
+- Go makes it easy to create **web APIs** using the `net/http` package.
+- A web server listens for requests on a specified port and responds with content.
+
+### Example: Simple Web Server
+
+```go
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
+        fmt.Fprintln(writer, "Welcome to GoTasker API!")
+    })
+
+    http.ListenAndServe(":8080", nil)
+}
+
